@@ -8,8 +8,14 @@ class SongContainer extends React.Component {
   constructor(props){
     super(props);
       this.state = {
-        songs: []
+        songs: [],
+        selectedSongId: ''
       }
+      this.handleSongSelect = this.handleSongSelect.bind(this)
+  }
+
+  handleSongSelect(id){
+    this.setState({selectedSongId: id})
   }
 
   componentDidMount() {
@@ -27,6 +33,7 @@ class SongContainer extends React.Component {
         <h5>Select A Song</h5>
         <SongSelect
           songs={this.state.songs}
+          onSongSelect={this.handleSongSelect}
         />
       </div>
     )

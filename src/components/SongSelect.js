@@ -4,15 +4,19 @@ const SongSelect = (props) => {
 
   const options = props.songs.map(song => {
     return <option
-      value={song['im:name'].label}
+      value={song.id.attributes['im:id']}
       key={song.id.attributes['im:id']}
     >
     {song['im:name'].label}
     </option>
     })
 
+    function handleChange(event){
+       props.onSongSelect(event.target.value)
+    }
+
   return (
-    <select id="song-selector" defaultValue="default">
+    <select id="song-selector" defaultValue="default" onChange={handleChange}>
       <option disabled value="default">Choose a Song...</option>
       {options}
     </select>
