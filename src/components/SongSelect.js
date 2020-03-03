@@ -13,7 +13,7 @@ const SongSelect = (props) => {
 
   return (
     <select id="song-selector" defaultValue="default">
-      <option disable value="default">Choose a Song...</option>
+      <option disabled value="default">Choose a Song...</option>
       {options}
     </select>
   )
