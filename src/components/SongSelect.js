@@ -4,10 +4,10 @@ const SongSelect = (props) => {
 
   const options = props.songs.map(song => {
     return <option
-      value={song.feed.entry['im:name'].label}
-      key={song.feed.entry['im:name'].id.attributes['im:id']}
+      value={song['im:name'].label}
+      key={song.id.attributes['im:id']}
     >
-    {song.feed.entry['im:name'].label}
+    {song['im:name'].label}
     </option>
     })
 
