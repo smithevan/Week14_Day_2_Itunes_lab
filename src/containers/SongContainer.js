@@ -1,6 +1,6 @@
 import React from 'react'
 import SongSelect from '../components/SongSelect'
-
+import SongDetail from '../components/SongDetail'
 
 class SongContainer extends React.Component {
 
@@ -12,6 +12,7 @@ class SongContainer extends React.Component {
         selectedSongId: ''
       }
       this.handleSongSelect = this.handleSongSelect.bind(this)
+      // this.selectedSong = this.selectedSong.bind(this)
   }
 
   handleSongSelect(id){
@@ -26,7 +27,22 @@ class SongContainer extends React.Component {
     .catch(err=>console.error)
   }
 
+  componentDidUpdate() {
+
+  }
+
+  // getSelectedSong(){
+  //   const selectedSong = this.state.songs.find(song => {
+  //     return song.id.attributes['im:id'] === this.state.selectedSongId
+  //   })
+  //   return selectedSong
+  // }
+
   render(){
+    const selectedSong = this.state.songs.find(song => {
+      return song.id.attributes['im:id'] === this.state.selectedSongId
+    })
+
     return(
       <div>
         <h2>Top 20 Songs:</h2>
@@ -34,6 +50,9 @@ class SongContainer extends React.Component {
         <SongSelect
           songs={this.state.songs}
           onSongSelect={this.handleSongSelect}
+        />
+        <SongDetail
+          song={selectedSong}
         />
       </div>
     )

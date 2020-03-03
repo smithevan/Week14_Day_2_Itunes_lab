@@ -12,6 +12,7 @@ const SongSelect = (props) => {
     })
 
     function handleChange(event){
+      console.log(event.target.value)
        props.onSongSelect(event.target.value)
     }
 
